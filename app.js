@@ -4,6 +4,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { fileURLToPath } from 'url';
+import { connect } from './db.js'
 import indexRouter from './routes/index.js';
 import apiRouter from './routes/api.js';
 import adminRouter from './routes/admin.js';
@@ -43,4 +44,6 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(3000, () => { });
+app.listen(3000, () => {
+  connect()
+});
